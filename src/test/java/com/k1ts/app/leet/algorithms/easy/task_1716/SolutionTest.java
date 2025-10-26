@@ -1,9 +1,7 @@
-package com.k1ts.app.algorithms.easy.task_1716;
+package com.k1ts.app.leet.algorithms.easy.task_1716;
 
 import org.junit.Assert;
 import org.junit.Test;
-
-import static org.junit.Assert.*;
 
 public class SolutionTest {
 
