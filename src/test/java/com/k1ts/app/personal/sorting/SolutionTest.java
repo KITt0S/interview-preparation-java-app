@@ -27,6 +27,19 @@ public class SolutionTest {
 
     @Test
     public void sortingBubble() {
+        Solution solution = new Solution();
+
+        int[] array = generateRandomArray();
+
+        int[] expected = getSortedArray(array);
+        int[] actual = solution.sortingBubble(array);
+
+        String message = "Sorting failed:\n" +
+                "initial array: " + Arrays.toString(array) + "\n"
+                + "expected array: " + Arrays.toString(expected) + "\n"
+                + "actual array: " + Arrays.toString(actual) + "\n";
+
+        Assert.assertArrayEquals(message, expected, actual);
     }
 
     private int[] generateRandomArray() {
