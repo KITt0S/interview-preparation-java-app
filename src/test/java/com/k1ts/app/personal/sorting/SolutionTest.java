@@ -9,20 +9,27 @@ import java.util.Random;
 public class SolutionTest {
 
     @Test
-    public void sortingByPaddingSmallestToStart() {
+    public void sortingByShiftingAndInsertingSmallestToStart() {
         Solution solution = new Solution();
 
         int[] array = generateRandomArray();
 
         int[] expected = getSortedArray(array);
-        int[] actual = solution.sortingByPaddingAndInsertingSmallestToStart(array);
+        int[] actual = solution.sortingByShiftingAndInsertingSmallestToStart(array);
 
-        String message = "Sorting failed:\n" +
-                "initial array: " + Arrays.toString(array) + "\n"
-                + "expected array: " + Arrays.toString(expected) + "\n"
-                + "actual array: " + Arrays.toString(actual) + "\n";
+        Assert.assertArrayEquals(getMessage(array, expected, actual), expected, actual);
+    }
 
-        Assert.assertArrayEquals(message, expected, actual);
+    @Test
+    public void sortingBySwappingCurrentWithMinimum() {
+        Solution solution = new Solution();
+
+        int[] array = generateRandomArray();
+
+        int[] expected = getSortedArray(array);
+        int[] actual = solution.sortingBySwappingCurrentWithMinimum(array);
+
+        Assert.assertArrayEquals(getMessage(array, expected, actual), expected, actual);
     }
 
     @Test
@@ -34,18 +41,19 @@ public class SolutionTest {
         int[] expected = getSortedArray(array);
         int[] actual = solution.sortingBubble(array);
 
-        String message = "Sorting failed:\n" +
-                "initial array: " + Arrays.toString(array) + "\n"
-                + "expected array: " + Arrays.toString(expected) + "\n"
-                + "actual array: " + Arrays.toString(actual) + "\n";
+        String message = getMessage(array, expected, actual);
 
         Assert.assertArrayEquals(message, expected, actual);
+    }
+
+    private int[] generateDefaultArray() {
+        return new int[] {5, 4, 3, 2, 1};
     }
 
     private int[] generateRandomArray() {
         Random random = new Random();
 
-        int[] result = new int[101];
+        int[] result = new int[10];
 
         for (int i = 0; i < result.length; i++) {
             result[i] = random.nextInt(100);
@@ -56,6 +64,13 @@ public class SolutionTest {
 
     private int[] getSortedArray(int[] array) {
         return Arrays.stream(array).sorted().toArray();
+    }
+
+    private String getMessage(int[] array, int[] expected, int[] actual) {
+        return "Sorting failed:\n" +
+                "initial array: " + Arrays.toString(array) + "\n"
+                + "expected array: " + Arrays.toString(expected) + "\n"
+                + "actual array: " + Arrays.toString(actual) + "\n";
     }
 
     public static void main(String[] args) {

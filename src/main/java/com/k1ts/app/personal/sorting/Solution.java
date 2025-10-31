@@ -4,7 +4,7 @@ import java.util.Arrays;
 
 public class Solution {
 
-    public int[] sortingByPaddingAndInsertingSmallestToStart(int[] unsortedArray) {
+    public int[] sortingByShiftingAndInsertingSmallestToStart(int[] unsortedArray) {
         int[] result = Arrays.copyOf(unsortedArray, unsortedArray.length);
 
         for (int i = 0; i < result.length - 1; i++) {
@@ -40,6 +40,29 @@ public class Solution {
                     result[j] = result[j + 1];
                     result[j + 1] = tmp;
                 }
+            }
+        }
+
+        return result;
+    }
+
+    public int[] sortingBySwappingCurrentWithMinimum(int[] unsortedArray) {
+        int[] result = Arrays.copyOf(unsortedArray, unsortedArray.length);
+
+        for (int i = 0; i < result.length - 1; i++) {
+            int index = i;
+            int minValue = result[i];
+            for (int j = i + 1; j < result.length; j++) {
+                if (result[j] < minValue) {
+                    index = j;
+                    minValue = result[j];
+                }
+            }
+
+            if (index != i) {
+                int tmp = result[i];
+                result[i] = minValue;
+                result[index] = tmp;
             }
         }
 
