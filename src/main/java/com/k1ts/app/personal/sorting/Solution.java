@@ -51,17 +51,15 @@ public class Solution {
 
         for (int i = 0; i < result.length - 1; i++) {
             int index = i;
-            int minValue = result[i];
             for (int j = i + 1; j < result.length; j++) {
-                if (result[j] < minValue) {
+                if (result[j] < result[index]) {
                     index = j;
-                    minValue = result[j];
                 }
             }
 
             if (index != i) {
                 int tmp = result[i];
-                result[i] = minValue;
+                result[i] = result[index];
                 result[index] = tmp;
             }
         }

@@ -4,15 +4,16 @@ import org.junit.Assert;
 import org.junit.Test;
 
 import java.util.Arrays;
-import java.util.Random;
 
 public class SolutionTest {
+
+    private final Generator generator = new Generator();
 
     @Test
     public void sortingByShiftingAndInsertingSmallestToStart() {
         Solution solution = new Solution();
 
-        int[] array = generateRandomArray();
+        int[] array = generator.generateRandomArray();
 
         int[] expected = getSortedArray(array);
         int[] actual = solution.sortingByShiftingAndInsertingSmallestToStart(array);
@@ -21,22 +22,10 @@ public class SolutionTest {
     }
 
     @Test
-    public void sortingBySwappingCurrentWithMinimum() {
-        Solution solution = new Solution();
-
-        int[] array = generateRandomArray();
-
-        int[] expected = getSortedArray(array);
-        int[] actual = solution.sortingBySwappingCurrentWithMinimum(array);
-
-        Assert.assertArrayEquals(getMessage(array, expected, actual), expected, actual);
-    }
-
-    @Test
     public void sortingBubble() {
         Solution solution = new Solution();
 
-        int[] array = generateRandomArray();
+        int[] array = generator.generateRandomArray();
 
         int[] expected = getSortedArray(array);
         int[] actual = solution.sortingBubble(array);
@@ -46,20 +35,16 @@ public class SolutionTest {
         Assert.assertArrayEquals(message, expected, actual);
     }
 
-    private int[] generateDefaultArray() {
-        return new int[] {5, 4, 3, 2, 1};
-    }
+    @Test
+    public void sortingBySwappingCurrentWithMinimum() {
+        Solution solution = new Solution();
 
-    private int[] generateRandomArray() {
-        Random random = new Random();
+        int[] array = generator.generateRandomArray();
 
-        int[] result = new int[10];
+        int[] expected = getSortedArray(array);
+        int[] actual = solution.sortingBySwappingCurrentWithMinimum(array);
 
-        for (int i = 0; i < result.length; i++) {
-            result[i] = random.nextInt(100);
-        }
-
-        return result;
+        Assert.assertArrayEquals(getMessage(array, expected, actual), expected, actual);
     }
 
     private int[] getSortedArray(int[] array) {
@@ -71,14 +56,5 @@ public class SolutionTest {
                 "initial array: " + Arrays.toString(array) + "\n"
                 + "expected array: " + Arrays.toString(expected) + "\n"
                 + "actual array: " + Arrays.toString(actual) + "\n";
-    }
-
-    public static void main(String[] args) {
-        SolutionTest test = new SolutionTest();
-
-        int[] initialArray = test.generateRandomArray();
-
-        System.out.println(Arrays.toString(initialArray));
-        System.out.println(Arrays.toString(test.getSortedArray(initialArray)));
     }
 }
