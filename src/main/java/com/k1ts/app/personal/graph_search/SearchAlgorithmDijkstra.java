@@ -1,4 +1,4 @@
-package com.k1ts.app.personal.graph_search.dijkstra_search;
+package com.k1ts.app.personal.graph_search;
 
 import java.util.*;
 
