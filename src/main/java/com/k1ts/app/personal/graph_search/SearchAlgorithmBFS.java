@@ -15,7 +15,7 @@ public class SearchAlgorithmBFS {
         int[] parent = new int[n];
         Arrays.fill(parent, -1);
 
-        Deque<Integer> queue = new ArrayDeque<>();
+        Queue<Integer> queue = new ArrayDeque<>();
         queue.add(start);
         visited[start] = true;
 
