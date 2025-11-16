@@ -1,6 +1,5 @@
 package com.k1ts.app.personal.graph_search;
 
-import com.k1ts.app.personal.sorting.SortingAlgorithmTest;
 import org.junit.Assert;
 import org.junit.Test;
 
@@ -9,16 +8,16 @@ import java.util.List;
 
 import static org.junit.Assert.*;
 
-public class SearchAlgorithmDFSTest {
+public class SearchAlgorithmBFSTest {
 
     @Test
     public void test() {
-        SearchAlgorithmDFS algorithm = new SearchAlgorithmDFS();
+        SearchAlgorithmBFS algorithm = new SearchAlgorithmBFS();
         int start = 0;
         int end = 4;
         List<List<Integer>> graph = generateGraph();
         List<Integer> expected = List.of(0, 1, 2, 4);
-        List<Integer> path = algorithm.dfs(graph, start, end);
+        List<Integer> path = algorithm.bfs(graph, start, end);
         Assert.assertEquals(expected, path);
     }
 
